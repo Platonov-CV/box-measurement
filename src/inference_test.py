@@ -9,7 +9,7 @@ FOCAL_LENGTH = 0.004
 SENSOR_SIZE = (0.00376, 0.0028)
 
 # prepare detection model
-det_model = YOLO('models/yolo11n_object365.pt')
+det_model = YOLO('../models/yolo11n_object365.pt')
 
 # prepare depth model
 model_configs = {
@@ -23,7 +23,7 @@ dataset = 'hypersim' # 'hypersim' for indoor model, 'vkitti' for outdoor model
 max_depth = 20 # 20 for indoor model, 80 for outdoor model
 
 depth_model = DepthAnythingV2(**{**model_configs[encoder], 'max_depth': max_depth})
-depth_model.load_state_dict(torch.load(f'models/depth_anything_v2_metric_{dataset}_{encoder}.pth', map_location='cpu'))
+depth_model.load_state_dict(torch.load(f'../models/depth_anything_v2_metric_{dataset}_{encoder}.pth', map_location='cpu'))
 depth_model.eval()
 
 # prepare video capture
