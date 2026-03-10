@@ -3,7 +3,6 @@ from io import BytesIO
 import cv2
 import numpy as np
 import torch
-from pydantic import BaseModel
 from fastapi.responses import StreamingResponse
 from ultralytics import YOLO
 from models.Depth_Anything_V2.metric_depth.depth_anything_v2.dpt import DepthAnythingV2
@@ -29,7 +28,7 @@ app.add_middleware(
 )
 
 # prepare detection model
-det_model = YOLO('../models/yolo11n_object365.pt')
+det_model = YOLO('./models/yolo11n_object365.pt')
 
 # prepare depth model
 model_configs = {
@@ -43,7 +42,7 @@ dataset = 'hypersim' # 'hypersim' for indoor model, 'vkitti' for outdoor model
 max_depth = 20 # 20 for indoor model, 80 for outdoor model
 
 depth_model = DepthAnythingV2(**{**model_configs[encoder], 'max_depth': max_depth})
-depth_model.load_state_dict(torch.load(f'../models/depth_anything_v2_metric_{dataset}_{encoder}.pth', map_location='cpu'))
+depth_model.load_state_dict(torch.load(f'./models/depth_anything_v2_metric_{dataset}_{encoder}.pth', map_location='cpu'))
 depth_model.eval()
 
 
