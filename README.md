@@ -24,7 +24,7 @@ $y = (h * d) / a$
 ## Results
 ![2026-02-1002-48-49-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1146b803-efd1-4951-944b-421c1f05a9d1)
 
-It was possible to achieve a size estimation error not exceeding ±2 cm.
+It was possible to achieve a size estimation error not exceeding ±5 cm.
 ## What`s next
 - The box detection isn`t too accurate. It would be beneficial to retrain YOLO specifically for box detection, or train a custom single-class detector.
 - Try 3D detectors that provide 3D bounding boxes, which would allow estimation of the actual box dimensions rather than just the 2D bounding box size.
@@ -58,7 +58,7 @@ $y = (h * d) / a$
 ### Результаты
 ![2026-02-1002-48-49-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/1146b803-efd1-4951-944b-421c1f05a9d1)
 
-Удалось достигнуть погрешности в оценке размеров, не превышающей +/- 2см.
+Удалось достигнуть погрешности в оценке размеров, не превышающей +/- 5см.
 ### Что можно улучшить
 - Есть проблемы с детекцией коробок, стоит перебучить YOLO исключительно на коробки, либо обучить собственный детектор на один класс
 - Попробовать 3D детекторы, дающие 3D bounding box, чтобы можно было оценивать конкретно размеры коробки, а не размеры bounding box
