@@ -17,7 +17,7 @@ SENSOR_SIZE = (0.00376, 0.0028)
 app = FastAPI()
 
 origins = [
-    "http://127.0.0.1:8000",
+    "http://localhost:8000",
 ]
 
 app.add_middleware(
@@ -51,7 +51,7 @@ async def process_frame(frame_file: UploadFile):
     frame_bytes = await frame_file.read()
     frame_np = np.frombuffer(frame_bytes, dtype=np.uint8)
     raw_frame = cv2.imdecode(frame_np, cv2.IMREAD_COLOR)
-    frame_size = raw_frame.shape
+    frame_size = (raw_frame.shape[1], raw_frame.shape[0])
 
     depth_frame = depth_model.infer_image(raw_frame)
     out_frame = cv2.cvtColor(depth_frame / 20, cv2.COLOR_GRAY2BGR)
